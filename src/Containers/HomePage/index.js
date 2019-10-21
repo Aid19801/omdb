@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Header, Card, SearchInput, Results } from '../../Components';
+import { Header, SearchInput, Results, Spinner } from '../../Components';
 import './styles.css';
 
 const API = 'http://www.omdbapi.com/?i=tt3896198&apikey=b6248ed0&';
@@ -7,6 +7,7 @@ const API = 'http://www.omdbapi.com/?i=tt3896198&apikey=b6248ed0&';
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
+  const [ spinner, setSpinner ] = useState(false);
 
   const handleInput = event => {
     setSearchTerm(event.target.value);
@@ -16,17 +17,17 @@ function HomePage() {
     searchTerm === ''
       ? setResults([])
       : setTimeout(() => {
+        setSpinner(true);
           fetch(`${API}s=${searchTerm}`)
             .then(res => {
-              console.log('res is back ', res);
               return res.json();
             })
             .then(json => {
-              console.log('json back: ', json);
               if (json.Error) {
                 return;
               }
               setResults(json.Search);
+              setSpinner(false);
             })
             .catch(err => {
               console.log('OMDB API Error: ', err);
@@ -38,8 +39,8 @@ function HomePage() {
     <div className="page__home">
       <Header />
       <SearchInput onChange={handleInput} />
-
-      <Results results={results} />
+      { spinner && <Spinner /> }
+      { !spinner && <Results results={results} />}
     </div>
   );
 }

@@ -1,17 +1,26 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import Header from './index';
+import { shallow, mount } from 'enzyme';
+import Card from './index';
 
-describe('ReusableCard', () => {
+describe('Card', () => {
     
     let wrapper;
 
-    let mockProps = {}
+    let mockProps = {
+        heading: 'mock1',
+        subheading: 'mock2',
+        callout: 'mock3',
+        img: 'mock4',
+    }
 
     beforeAll(() => {
-        wrapper = mount(<Header {...mockProps} />);
+        wrapper = shallow(<Card {...mockProps} />);
     });
-    it('should render the Reusable Card without exploding', () => {
+    it('should render the Card without exploding', () => {
         expect(wrapper.find('#card__fade-in').length).toEqual(1);
+    });
+    it('should render the Card with expected props', () => {
+        const component = mount(<Card {...mockProps} />);
+        expect(component.props()).toEqual(mockProps);
     });
 })
