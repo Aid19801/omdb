@@ -3,11 +3,3 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.heading-font {
-  font-family: Helvetica Neue bold 18px;
-}
-
-.body-font {
-  font-family: Helvetica Neue regular 16px;
-}

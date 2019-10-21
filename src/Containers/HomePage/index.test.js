@@ -12,6 +12,6 @@ describe('HomePage', () => {
         wrapper = mount(<HomePage {...mockProps} />);
     });
     it('should render the Container without exploding', () => {
-        expect(wrapper.find('div').props().className).toEqual('home__container');
+        expect(wrapper.find('.page__home').length).toEqual(1);
     });
 })
