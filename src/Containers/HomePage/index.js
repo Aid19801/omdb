@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Header, SearchInput, Results, Spinner } from '../../Components';
 import './styles.css';
 
-const API = 'http://www.omdbapi.com/?i=tt3896198&apikey=b6248ed0&';
+const API = 'https://www.omdbapi.com/?i=tt3896198&apikey=b6248ed0&';
 
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
