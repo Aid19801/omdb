@@ -15,14 +15,14 @@ function HomePage() {
   useEffect(() => {
     searchTerm === ''
       ? setResults([])
-      : (
-        fetch(`${API}s=${searchTerm}`)
+      : setTimeout(() => {
+          fetch(`${API}s=${searchTerm}`)
             .then(res => {
               console.log('res is back ', res);
-              return res.json()
+              return res.json();
             })
             .then(json => {
-              console.log('json back: ', json)
+              console.log('json back: ', json);
               if (json.Error) {
                 return;
               }
@@ -30,8 +30,8 @@ function HomePage() {
             })
             .catch(err => {
               console.log('OMDB API Error: ', err);
-            })
-      )
+            });
+        }, 1000);
   }, [searchTerm]);
 
   return (
@@ -40,7 +40,6 @@ function HomePage() {
       <SearchInput onChange={handleInput} />
 
       <Results results={results} />
-      
     </div>
   );
 }

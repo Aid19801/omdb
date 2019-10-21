@@ -11,7 +11,9 @@ const useStyles = makeStyles(theme => ({
   grid: {
     height: 160,
     padding: 20,
-    margin: 20
+    margin: 20,
+    minWidth: 450,
+    maxWidth: 450,
   },
   card: {
     display: 'flex',
@@ -36,7 +38,7 @@ function ReUseableCard({ heading, subheading, img, callout }) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} className={classes.grid}>
+    <Grid id="card__fade-in" item xs={12} className={classes.grid}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.cover}
