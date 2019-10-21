@@ -36,7 +36,7 @@ function ReUseableCard({ heading, subheading, img, callout }) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={4} className={classes.grid}>
+    <Grid item xs={12} className={classes.grid}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.cover}
