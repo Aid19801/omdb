@@ -12,6 +12,6 @@ describe('ReusableCard', () => {
         wrapper = mount(<Header {...mockProps} />);
     });
     it('should render the Reusable Card without exploding', () => {
-        expect(wrapper.find('.reuseable-card').length).toEqual(1);
+        expect(wrapper.find('.MuiGrid-grid-xs-4').length).toEqual(1);
     });
 })
